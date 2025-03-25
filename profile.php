@@ -326,7 +326,7 @@
         }
     </style>
 </head>
-<body>
+<body> 
     <div class="profile-container">
         <section class="hero-section">
             <div class="profile-picture-hero">
@@ -335,8 +335,11 @@
                     <i class="fas fa-camera"></i>
                     <input type="file" accept="image/*" onchange="previewProfilePicture(this)">
                 </button>
+                
             </div>
             <div class="profile-info-hero">
+            <a href="dashboard.php?valofmenu=dashboard" class="btn btn-sm btn-outline-primary"><i class="fas fa-arrow-left me-1"></i> Back to Recruitment</a>
+
                 <h2 class="profile-name-hero" id="hero-name">John Doe</h2>
                 <div class="profile-details-hero">
                     <p><i class="fas fa-envelope"></i> <span id="hero-email">john.doe@example.com</span></p>
@@ -397,6 +400,7 @@
             <div class="activity-grid" id="activityGrid">
                 </div>
         </section>
+        
 
         <div id="editProfileModal" class="edit-profile-modal">
             <div class="edit-modal-content">

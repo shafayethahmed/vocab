@@ -441,7 +441,41 @@
               ?>
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                  <!-- Collect Data From Recruit Section In Front Page--> 
-                  <table>
+    <style> /*Style for New menubar to control the Multi Menu Function */
+    #menu-bar {
+    background-color:lightgreen;
+    padding: 5px 10px;
+    display: flex;
+    gap: 8px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    margin: 10px;
+}
+#menu-bar a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #333;
+    padding: 3px 6px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+#menu-bar a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+</style>
+  <div id="menu-bar">   <!--- new menubar added For Multi Function --->
+    <a id="menu-item1" href="index.php">Circular</a>
+    <a id="menu-item2" href="#">Item2</a>
+    <a id="menu-item3" href="#">#</a>
+    <a id="menu-item4" href="#">$</a>
+</div>
+       <?php 
+            //Inside Role Insert From Here 
+       ?>
+                 <table>
                      <thead>
                      <tr >
                             <th>AP-Id</th>
@@ -476,11 +510,12 @@
                     ?>
                      </tbody>
                   </table>
+                  </div>
               <?php
-          }
+          } //New else if for Main Menu Start From Here!
      ?>
        
-    </div>
+   
     <script src="./asset/JS/Script.js" defer></script>   
 </body>
 </html>
