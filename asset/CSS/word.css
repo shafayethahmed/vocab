@@ -1,0 +1,185 @@
+    /* General Page Styling */
+    #main-body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Button Styling */
+    #model-btn-edit-word {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 10px;
+        float: right;
+        font-size: 16px;
+    }
+
+    #model-btn-edit-word:hover {
+        background-color: #0056b3;
+    }
+
+  /* Modal Background */
+#example-modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Modal Content */
+#example-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+    text-align: center;
+}
+
+
+    /* Responsive for Smaller Screens */
+    @media (max-width: 768px) {
+        #example-modal-content {
+            width: 90%;
+        }
+    }
+
+    /* Close Button */
+    #example-modal-close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #ff4d4d;
+    }
+
+    #example-modal-close-btn:hover {
+        color: red;
+    }
+
+    /* Form Styling */
+    #modal-word-label, #modal-meaning-label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    #modal-word-input, #modal-meaning-textarea {
+        width: 87%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    /* Modal Footer */
+    #example-modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    #example-modal-cancel-btn, #example-modal-save-btn {
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    #example-modal-cancel-btn {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    #example-modal-save-btn {
+        background-color: #007bff;
+        color: white;
+    }
+
+    #example-modal-cancel-btn:hover {
+        background-color: #545b62;
+    }
+
+    #example-modal-save-btn:hover {
+        background-color: #0056b3;
+    }
+    /* Table Styling */
+    #words-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        margin-top: 20px;
+    }
+
+    #words-table th, #words-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #words-table th {
+        background-color: #007bff;
+        color: white;
+    }
+    /* Pagination Container */
+#custom-pagination-container {
+display: flex;
+justify-content: center;
+list-style: none;
+padding: 10px 0;
+margin-top: 20px;
+}
+
+/* Pagination Items */
+#custom-pagination-container li {
+margin: 0 5px;
+}
+
+/* Pagination Links */
+#custom-pagination-container a {
+display: block;
+padding: 8px 12px;
+background: #007bff;
+color: white;
+text-decoration: none;
+border-radius: 5px;
+transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+#custom-pagination-container a:hover {
+background: #0056b3;
+}
+
+/* Active Page */
+#custom-pagination-active a {
+background: #ff4d4d;
+font-weight: bold;
+}
+
+/* Disabled State */
+#custom-pagination-disabled a {
+background: #d6d6d6;
+color: #a0a0a0;
+cursor: not-allowed;
+}
+#tittle-name{
+     text-align: center;
+}

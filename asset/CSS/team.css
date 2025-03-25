@@ -1,0 +1,64 @@
+
+.dashboard-card-for-open{ display: flex; gap: 15px; margin-bottom: 20px; }
+.card { background: white; padding: 20px; border-radius: 10px; width: 23%; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+.card i { font-size: 30px; color: #3498db; margin-bottom: 10px; }
+.card h3 { margin-top: 10px; }
+.card p { font-size: 24px; font-weight: bold; }
+h2 { margin: 20px 0; }
+.roleTable { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden; }
+.add-btn-role, .edit-btn { padding: 10px 10px; border: none; cursor: pointer; border-radius: 5px; margin-bottom: -18px; background: #1dce67;  }
+.add-btn-employee { background: #1dce67; margin-left: 0; padding: 10px; border-radius: 5px; }
+.edit-btn { background: #f39c12; }
+.search-box { padding: 8px; width: 20%; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; }
+.modal {
+    display: none;
+    position: fixed; /* Fix it on the screen */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Ensure perfect centering */
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 300px;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.modal.active {
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.modal-header { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+.modal input, .modal select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px; }
+.modelbutton{
+    display: flex;
+    gap: 5px;
+}
+#add-btn-confirm{
+    background-color: #1dce67;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#close-btn{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
