@@ -404,7 +404,7 @@ else {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title mb-3">CV Preview</h5>
-                            <iframe id="cv-preview" src="http://localhost/Vocabulary_Builder/mainDashboard/<?php echo htmlspecialchars($crow['cv_pdf'], ENT_QUOTES, 'UTF-8'); ?>" width="100%" height="600px"></iframe>
+                            <iframe id="cv-preview" src="http://localhost/Vocab/mainDashboard/<?php echo htmlspecialchars($crow['cv_pdf'], ENT_QUOTES, 'UTF-8'); ?>" width="100%" height="600px"></iframe>
                              <?php print($crow['cv_pdf']); //Location of Cv in DB.?> 
                         </div>
                     </div>
