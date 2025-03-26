@@ -3,96 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VocaSphere</title>
+    <title>VocaSphere - Expand Your Vocabulary</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* General Styling */
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f6;
             color: #333;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .auth-buttons a {
+            background-color: #3498db;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-buttons a:hover {
+            background-color: #2980b9;
         }
 
         /* Marquee Styling */
-        .marquee {
+        .announcement-bar {
             width: 100%;
-            background: #007bff;
+            background: #3498db;
             color: #fff;
             padding: 10px 0;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            position: absolute;
-            top: 0px;
-        }
-        
-        /*Notice Bar */
-        .notice-item-for-recruit{
-            width: 100%;
-            background:white;
-            color: black;
-            padding: 4px;
             font-size: 16px;
-            font-weight:normal;
             text-align: center;
-            position:absolute;
-            top: 40px;
-        }
-        /* Dictionary Container */
-        .dictionary-container {
-            width: 50%;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
         }
 
-        .dictionary-container:hover {
-            transform: scale(1.02);
+        .marquee-content {
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Notice Bar */
+        .notice-bar {
+            width: 100%;
+            background: #f9f9f9;
+            color: #e74c3c;
+            padding: 8px 0;
+            font-size: 14px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notice-bar a {
+            color: #c0392b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .notice-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .dictionary-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 70%;
+            max-width: 800px;
         }
 
         h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #007bff;
+            font-size: 36px;
+            color: #3498db;
+            margin-bottom: 30px;
         }
 
-        /* Search Box */
         .search-box {
-            width: 90%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
             outline: none;
-            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .search-box:focus {
-            border-color: #0056b3;
-            box-shadow: 0px 0px 10px rgba(0, 91, 187, 0.3);
+            border-color: #2980b9;
+            box-shadow: 0 0 12px rgba(52, 152, 219, 0.5);
         }
 
-        /* Result Box */
         .result-container {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
+            margin-top: 30px;
+            padding: 20px;
+            background: #ecf0f1;
             border-radius: 8px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
             text-align: left;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s, transform 0.5s;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         }
 
         .show-result {
@@ -101,80 +177,215 @@
         }
 
         .word-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: #007bff;
+            color: #3498db;
+            margin-bottom: 10px;
         }
 
         .definition {
             font-size: 16px;
-            margin-top: 5px;
             color: #555;
+            line-height: 1.6;
         }
 
-        /* Auth Icons Below Search */
-        .auth-container {
+        /* Features Section */
+        .features-section {
+            background: #e6f7ff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 28px;
+            color: #3498db;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
         }
 
-        .auth-container a {
-            text-decoration: none;
-            font-size: 20px;
-            color: #007bff;
+        .feature-card {
             background: #fff;
-            padding: 8px 12px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: opacity 0.3s;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
 
-        .auth-container a:hover {
-            opacity: 0.7;
+        .feature-card h3 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #3498db;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ecf0f1;
+            color: #2980b9;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="marquee">
-    Welcome to the VocaSphere - Enhance Your Word Power! Login Here For Test Your Vocabulary Skill <a href="../LoginPage.php"><button class="modal-btn"><b style="color: red; padding:5px; margin-top:-10px;">Login!</b></button></a>
-</div>
+    <header>
+        <div class="logo">VocaSphere</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#cta">Get Started</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="recruit.php">Apply Now</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="../LoginPage.php"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="../LoginPage.php?task=create_account"><i class="fas fa-user-plus"></i> Sign Up</a>
+        </div>
+    </header>
 
-<div class="notice-item-for-recruit">
-           <marquee behavior="slow" direction="left">"VocaSphere is hiring! Join our dynamic team and take your career to the next level. Recruitment ends in just 7 days, so don’t miss this opportunity! Hurry up and send your CV and other relevant information to <a href="recruit.php"><button class="modal-btn"> <b style="color: red;">Hire Me!</b></button></a> ."</marquee>
+    <div class="announcement-bar">
+        <div class="marquee-content">
+            Welcome to the VocaSphere - Enhance Your Word Power! Login Here For Test Your Vocabulary Skill <a href="../LoginPage.php"><button style="background: none; border: none; color: red; cursor: pointer; font-weight: bold;">Login!</button></a>
+        </div>
     </div>
-<div class="dictionary-container">
-    <h1>Vocasphere</h1>
-    <input type="text" id="search-box" class="search-box" placeholder="Type a word..." autocomplete="off">
-    <div id="result" class="result-container"></div>
-</div>
 
-<script>
-$(document).ready(function(){
-    $("#search-box").on("keyup", function(){
-        let query = $(this).val();
-        if (query.length > 0) {
-            $.ajax({
-                url: "search.php",
-                type: "POST",
-                data: { search: query },
-                success: function(data) {
-                    $("#result").html(data);
-                    $("#result").addClass("show-result");
+    <div class="notice-bar">
+        <marquee behavior="scroll" direction="left" scrollamount="4">
+            "VocaSphere is hiring! Join our dynamic team and take your career to the next level. Recruitment ends in just 7 days, so don’t miss this opportunity! Hurry up and send your CV and other relevant information to <a href="recruit.php"><button style="background: none; border: none; color: red; cursor: pointer; font-weight: bold;">Hire Me!</button></a> ."
+        </marquee>
+    </div>
+
+    <div class="main-content">
+        <div class="dictionary-container">
+            <h1>Explore the World of Words</h1>
+            <input type="text" id="search-box" class="search-box" placeholder="Type a word to discover its meaning..." autocomplete="off">
+            <div id="result" class="result-container"></div>
+        </div>
+    </div>
+
+    <section id="features" class="features-section">
+        <h2>Unlock the Power of Vocabulary</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-search feature-icon"></i>
+                <h3>Instant Word Definitions</h3>
+                <p>Get clear and concise definitions for any word you search, helping you understand its meaning and usage.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-lightbulb feature-icon"></i>
+                <h3>Enhance Your Knowledge</h3>
+                <p>Expand your vocabulary and improve your communication skills with our comprehensive dictionary.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>Track Your Progress</h3>
+                <p>Login to test your vocabulary skills and track your learning journey over time.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users feature-icon"></i>
+                <h3>Join Our Community</h3>
+                <p>Connect with other language enthusiasts and share your passion for words.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <h2>Ready to Expand Your Lexicon?</h2>
+        <p>Join VocaSphere today and embark on a journey of linguistic discovery!</p>
+        <a href="../LoginPage.php?task=create_account" class="cta-button"><i class="fas fa-user-plus"></i> Sign Up Now</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 VocaSphere. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $("#search-box").on("keyup", function(){
+                let query = $(this).val();
+                if (query.length > 0) {
+                    $.ajax({
+                        url: "search.php",
+                        type: "POST",
+                        data: { search: query },
+                        success: function(data) {
+                            $("#result").html(data);
+                            $("#result").addClass("show-result");
+                        }
+                    });
+                } else {
+                    $("#result").removeClass("show-result").html("");
                 }
             });
-        } else {
-            $("#result").removeClass("show-result").html("");
-        }
-    });
-});
-</script>
+        });
+    </script>
 
 </body>
 </html>
