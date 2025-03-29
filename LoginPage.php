@@ -103,19 +103,34 @@ error_reporting(0);
                        <input type="password" id="cpassword" name="cpassword" required placeholder="Re-type Password">
                    </div>
                    <!-- Actions section containing the Sign In button and forgot password link -->
+                  <!--- Use for reduce load balancing by Hide Signup Button from the Backend - Connected with --pagecontrol(signupauth) --->
+                   <?php 
+                   include_once('connection.php');
+                $query = "SELECT `val` FROM `pagecontrol` WHERE `pagefunction` = 'signupauth' ";
+                $resultOfQuery = mysqli_query($conn,$query);
+                while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){ //Come From DB.
+                        ?>  
                    <div class="actions">
                        <button type="submit" class="btn" name="sub" value="signup">Sign Up</button>
                    </div>
+                   <?php 
+                     }
+                   }
+                   mysqli_close($conn);
+                   ?>
                    <!-- Divider text for alternative login options -->
                    <div class="or-divider">or</div>
                    <!-- Google Sign In button -->
+                    <!--
                    <div class="google-signin">
                        <button type="button" class="btn google-btn">
-                           <!-- SVG icon for Google -->
+                            SVG icon for Google 
                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" class="google-icon"><path fill="#4285F4" d="M44.5,20H24v8.5h11.7c-1.1,3.2-3.6,5.7-6.7,6.9l6.7,5.2c3.9-3.6,6.3-8.8,6.3-14.6C44.7,24.9,44.6,22.4,44.5,20z"/><path fill="#34A853" d="M24,44c5.9,0,10.8-1.9,14.4-5.1l-6.7-5.2c-2,1.3-4.6,2-7.7,2c-5.9,0-10.8-4-12.6-9.4l-7.2,5.6C8.9,39.7,15.9,44,24,44z"/><path fill="#FBBC05" d="M11.4,26.3c-0.5-1.3-0.8-2.7-0.8-4.3s0.3-3,0.8-4.3l-7.2-5.6C2.3,15.6,1,19.1,1,22.8s1.3,7.2,3.2,10.7L11.4,26.3z"/><path fill="#EA4335" d="M24,9.5c3.2,0,6.1,1.1,8.4,3.2l6.3-6.3C34.8,2.9,29.9,1,24,1c-8.1,0-15.1,4.3-19.2,10.7l7.2,5.6C13.2,13.5,18.1,9.5,24,9.5z"/><path fill="none" d="M0,0h48v48H0V0z"/></svg>
                            Sign in with Google
                        </button>
                    </div>
+                -->
                    <!-- Section for account creation -->
                    <div class="create-account">
                        <p>Already Have Account? <a href="?task="><b>Login Here</b></a></p>
@@ -180,20 +195,34 @@ error_reporting(0);
                         <input type="password" id="password" name="password" required placeholder="********">
                     </div>
                     <!-- Actions section containing the Sign In button and forgot password link -->
+                    <?php 
+                   include_once('connection.php');
+                   $query = "SELECT `val` FROM `pagecontrol` WHERE `pagefunction` = 'loginauth' ";
+                   $resultOfQuery = mysqli_query($conn,$query);
+                   while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){ //Come From DB.
+                        ?>  
+
                     <div class="actions">
                         <button type="submit" class="btn" name="sub" value="signin">Sign in</button>
                         <a href="#" class="forgot-password">Forgot password?</a>
                     </div>
+                    <?php 
+                    } } 
+                    mysqli_close($conn) ;?>
                     <!-- Divider text for alternative login options -->
                     <div class="or-divider">or</div>
+                    
                     <!-- Google Sign In button -->
-                    <div class="google-signin">
+                  <!--  <div class="google-signin">
                         <button type="button" class="btn google-btn">
-                            <!-- SVG icon for Google -->
+                             SVG icon for Google
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" class="google-icon"><path fill="#4285F4" d="M44.5,20H24v8.5h11.7c-1.1,3.2-3.6,5.7-6.7,6.9l6.7,5.2c3.9-3.6,6.3-8.8,6.3-14.6C44.7,24.9,44.6,22.4,44.5,20z"/><path fill="#34A853" d="M24,44c5.9,0,10.8-1.9,14.4-5.1l-6.7-5.2c-2,1.3-4.6,2-7.7,2c-5.9,0-10.8-4-12.6-9.4l-7.2,5.6C8.9,39.7,15.9,44,24,44z"/><path fill="#FBBC05" d="M11.4,26.3c-0.5-1.3-0.8-2.7-0.8-4.3s0.3-3,0.8-4.3l-7.2-5.6C2.3,15.6,1,19.1,1,22.8s1.3,7.2,3.2,10.7L11.4,26.3z"/><path fill="#EA4335" d="M24,9.5c3.2,0,6.1,1.1,8.4,3.2l6.3-6.3C34.8,2.9,29.9,1,24,1c-8.1,0-15.1,4.3-19.2,10.7l7.2,5.6C13.2,13.5,18.1,9.5,24,9.5z"/><path fill="none" d="M0,0h48v48H0V0z"/></svg>
                             Sign in with Google
                         </button>
                     </div>
+                    --->
+            
                     <!-- Section for account creation -->
                     <div class="create-account">
                         <p>New to VocaSphere? <a href="?task=create_account">Create Account</a></p>
