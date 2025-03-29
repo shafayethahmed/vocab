@@ -2,6 +2,37 @@
 session_start();
 session_destroy();
 ?>
+<?php 
+error_reporting(0);
+   // Include database connection
+   include_once('connection.php');
+   
+   // Query to fetch both signupauth and loginauth data
+   $sqlquery = "SELECT `pagefunction`, `val` FROM `pagecontrol` WHERE `pagefunction` IN ('signupauth', 'loginauth')";
+   $resultOfQuery = mysqli_query($conn, $sqlquery);
+   
+   // Initialize variables to track values
+   $signupAuth = false;
+   $loginAuth = false;
+   
+   // Process query results
+   while ($row = mysqli_fetch_assoc($resultOfQuery)) {
+       if ($row['pagefunction'] == 'signupauth' && $row['val'] == 0) {
+           $signupAuth = true;
+       }
+       if ($row['pagefunction'] == 'loginauth' && $row['val'] == 0) {
+           $loginAuth = true;
+       }
+   }
+   
+   // Redirect if both conditions are met
+   if ($signupAuth && $loginAuth) {
+       header("Location: ./mainDashboard/index.php"); // Replace 'dashboard.php' with the desired URL
+       exit();
+   } 
+
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +68,7 @@ session_destroy();
                <h1 class="title">VocaSphere</h1>
                <!-- Subtitle welcoming the user -->
                <h2 class="welcome">SignUp Here</h2>
+               <?php print($lv); ?>
                <!--text Area for Warning -->
                <blockquote>
                  <?php 

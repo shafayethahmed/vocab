@@ -373,11 +373,19 @@
 
 </style>
   <div id="menu-bar">   <!--- new menubar added For Multi Function --->
-    <a id="menu-item1" href="index.php">Circular</a>
+    <a id="menu-item1" href="i.php?target=circular">Circular</a>
     <a id="menu-item2" href="#">Item2</a>
     <a id="menu-item3" href="#">#</a>
     <a id="menu-item4" href="#">$</a>
 </div>
+        <?php
+              //This Panel create for print the circular.
+              $subMenuTake = $_GET['target'];
+              print($subMenuTake);
+              if('circular' === $subMenuTake){
+                print("Hello From Circular.");
+              }
+            ?>    
        <?php 
             //Inside Role Insert From Here 
        ?>

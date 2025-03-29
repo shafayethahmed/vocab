@@ -127,7 +127,7 @@ elseif (isset($_POST['submitCheck'])) {
                     echo "<p><strong>Login Details:</strong></p>";
                     echo "<p><strong>Email:</strong> " . htmlspecialchars($checkEmail) . "</p>";
                     echo "<p><strong>Password:</strong> 11223344</p>";
-                    echo "<p><strong>Login Link:</strong> <a href='#'>Login Here</a></p>"; // Replace # with actual link
+                    echo "<p><strong>Login Link:</strong> <a href='../LoginPage.php'>Login Here</a></p>"; // Replace # with actual link
 
                 } elseif ($status == 2) {
                     echo "<p style='color: orange;'><strong>Status:On Hold (You are under Observation, Please Check Status Again After 2 Days.)</strong></p>";

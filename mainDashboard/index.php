@@ -1,3 +1,7 @@
+<?php 
+ //Connecting the DataBase From here :
+ include_once('../connection.php'); //DB
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,12 +88,12 @@
             padding: 10px 0;
             font-size: 16px;
             text-align: center;
-            overflow: hidden;
+            overflow: hidden;    
         }
 
         .marquee-content {
             white-space: nowrap;
-            animation: marquee 15s linear infinite;
+            animation: marquee 30s linear infinite;  /* Here Design Animated Slowly Fixing The Time. */
         }
 
         @keyframes marquee {
@@ -300,27 +304,81 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#cta">Get Started</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="recruit.php">Apply Now</a></li>
+                <!-- Access Controled from Management Tools Of Vocasphere--->
+                <?php 
+                $query = "SELECT `val` FROM `pagecontrol` WHERE `pagefunction` = 'applynow' ";
+                $resultOfQuery = mysqli_query($conn,$query);
+                while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){
+                    ?>  <!-- It's Only Displayed When Access is On . Connected with Applynow -->
+                              <li><a href="recruit.php" style="color:red">Apply Now <sup  style="color:yellow">Ongoing</sup></a></li>
+                    <?php
+                    }
+                }
+                ?>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="../LoginPage.php"><i class="fas fa-sign-in-alt"></i> Login</a>
-            <a href="../LoginPage.php?task=create_account"><i class="fas fa-user-plus"></i> Sign Up</a>
-        </div>
+                    <!-- Hide Login button from backend to Adjust Maintainance --> 
+
+        <?php 
+                $query = "SELECT `val` FROM `pagecontrol` WHERE `pagefunction` = 'loginauth' ";
+                $resultOfQuery = mysqli_query($conn,$query);
+                while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){
+                    ?>  <!-- It's Only Displayed When Access is On . Connected with loginauth -->
+                     <a href="../LoginPage.php"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <?php
+                    }
+                }
+                ?>
+            <!-- Hide Sign Up button from backend to Adjust User Load Balance --> 
+            <?php 
+                $query = "SELECT `val` FROM `pagecontrol` WHERE `pagefunction` = 'signupauth' ";
+                $resultOfQuery = mysqli_query($conn,$query);
+                while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){
+                    ?>  <!-- It's Only Displayed When Access is On . Connected with signupauth -->
+                          <a href="../LoginPage.php?task=create_account"><i class="fas fa-user-plus"></i> Sign Up</a>
+                    <?php
+                    }
+                }
+                ?>
+                        </div>
     </header>
-
-    <div class="announcement-bar">
-        <div class="marquee-content">
-            Welcome to the VocaSphere - Enhance Your Word Power! Login Here For Test Your Vocabulary Skill <a href="../LoginPage.php"><button style="background: none; border: none; color: red; cursor: pointer; font-weight: bold;">Login!</button></a>
-        </div>
-    </div>
-
-    <div class="notice-bar">
-        <marquee behavior="scroll" direction="left" scrollamount="4">
-            "VocaSphere is hiring! Join our dynamic team and take your career to the next level. Recruitment ends in just 7 days, so don’t miss this opportunity! Hurry up and send your CV and other relevant information to <a href="recruit.php"><button style="background: none; border: none; color: red; cursor: pointer; font-weight: bold;">Hire Me!</button></a> ."
-        </marquee>
-    </div>
+<!--- Main Notice Bar Also Included For Tools it's connected with mainnotice--->
+<?php 
+                $query = "SELECT `val`,`functionstatus` FROM `pagecontrol` WHERE `pagefunction` = 'mainnotice' ";
+                $resultOfQuery = mysqli_query($conn,$query);
+                while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){
+                    ?>  <!-- It's Only Displayed When Access is On . Connected with mainnotice -->
+                       <div class="announcement-bar">
+                            <div class="marquee-content">
+                            <?php print($row['functionstatus']);?> <!-- Main Notice Bar 2nd From DB-->
+                            </div>
+                        </div>
+                    <?php
+                    }
+                }
+                ?>
+<!--- Notice Bar Also Included For Tools it's connected with Applynow --->
+            <?php 
+                $query = "SELECT `val`,`functionstatus` FROM `pagecontrol` WHERE `pagefunction` = 'applynow' ";
+                $resultOfQuery = mysqli_query($conn,$query);
+                while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){
+                    ?>  <!-- It's Only Displayed When Access is On . Connected with Applynow -->
+                               <div class="notice-bar">
+                                <marquee behavior="scroll" direction="left" scrollamount="4">
+                                    <?php print($row['functionstatus']);?> <!-- Notice Bar 2nd From DB-->
+                                </marquee>
+                                 </div>
+                    <?php
+                    }
+                }
+                ?>
+ 
 
     <div class="main-content">
         <div class="dictionary-container">
@@ -359,7 +417,18 @@
     <section id="cta" class="cta-section">
         <h2>Ready to Expand Your Lexicon?</h2>
         <p>Join VocaSphere today and embark on a journey of linguistic discovery!</p>
-        <a href="../LoginPage.php?task=create_account" class="cta-button"><i class="fas fa-user-plus"></i> Sign Up Now</a>
+                    <!-- Hide Sign Up button from backend to Adjust User Load Balance --> 
+                    <?php 
+                    $query = "SELECT `val` FROM `pagecontrol` WHERE `pagefunction` = 'signupauth' ";
+                    $resultOfQuery = mysqli_query($conn,$query);
+                    while($row = mysqli_fetch_assoc($resultOfQuery)){
+                    if($row['val'] == 1){
+                    ?>  <!-- It's Only Displayed When Access is On . Connected with signupauth -->
+                     <a href="../LoginPage.php?task=create_account" class="cta-button"><i class="fas fa-user-plus"></i> Sign Up Now</a>
+                <?php
+                    }
+                }
+                ?>
     </section>
 
     <footer>

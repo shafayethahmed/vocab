@@ -22,7 +22,7 @@
                 $Query = "INSERT INTO `users`(`email`, `password`) VALUES ('$email','$hashdefaultPassword')";
                  mysqli_query($conn,$Query);
                  //redirect to Dashboard
-                  header('location:http://localhost/Vocabulary_Builder/LoginPage.php?registration=complete');
+                  header('location:./Loginpage.php?registration=complete');
              }
               else{
                 header('location:./LoginPage.php?task=create_account&email=existEmail');
