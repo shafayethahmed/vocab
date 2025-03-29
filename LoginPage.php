@@ -46,7 +46,7 @@ error_reporting(0);
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Main container for centering the login card on the screen -->
+ <!-- Main container for centering the login card on the screen -->
 <!--- php added here For collecting the data if it's for Signup ---> 
 <?php 
    $tasks = $_GET['task'] ?? '';
@@ -64,6 +64,9 @@ error_reporting(0);
            </div>
            <!-- Right side of the card containing the login form -->
            <div class="card-right">
+                <div class="back-home-box">
+                    <a href="./mainDashboard/index.php" class="back-to-home">Back To The HomePage</a>
+                </div>
                <!-- Title of the login form -->
                <h1 class="title">VocaSphere</h1>
                <!-- Subtitle welcoming the user -->
@@ -155,6 +158,9 @@ error_reporting(0);
             </div>
             <!-- Right side of the card containing the login form -->
             <div class="card-right">
+                <div class="back-home-box">
+                    <a href="./mainDashboard/index.php" class="back-to-home">Back To The HomePage</a>
+                </div>
                 <!-- Title of the login form -->
                 <h1 class="title">VocaSphere</h1>
                 <!-- Subtitle welcoming the user -->

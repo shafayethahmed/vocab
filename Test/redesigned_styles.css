@@ -1,0 +1,332 @@
+/* Reset some default browser styles */
+body, h1, h2, p, form, input, button, div, a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    text-decoration: none; /* Remove default link styling */
+    color: inherit; /* Inherit text color from parent */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-image: url("asset/Contexts/bg-3.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Add some padding for smaller screens */
+}
+
+.back-home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    z-index: 10; /* Ensure it's above the card */
+}
+
+.back-home-button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px; /* Adjust maximum width as needed */
+}
+
+.auth-card {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column; /* Stack banner and form on smaller screens */
+}
+
+.card-banner {
+    background-color: #3498db; /* Example banner color */
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.signup-card .card-banner {
+    background-color: #2ecc71; /* Different color for signup banner */
+}
+
+.banner-content .logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.banner-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.banner-content p {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.card-form {
+    padding: 30px;
+}
+
+.form-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.alert-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.alert-container.warning {
+    background-color: #ffe0b2;
+    border: 1px solid #ffb300;
+    color: #795548;
+}
+
+.alert-container.success {
+    background-color: #dcedc8;
+    border: 1px solid #aed581;
+    color: #388e3c;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.actions {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.primary-btn {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.signup-card .primary-btn {
+    background-color: #2ecc71;
+}
+
+.primary-btn:hover {
+    background-color: #2980b9;
+}
+
+.signup-card .primary-btn:hover {
+    background-color: #27ae60;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #3498db;
+}
+
+.or-divider {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+    color: #777;
+}
+
+.or-divider span {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.or-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ccc;
+    transform: translateY(-50%);
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.auth-switch a {
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.auth-switch a:hover {
+    color: #2980b9;
+}
+
+.image-credit {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: #fff;
+    opacity: 0.7;
+}
+
+.image-credit a {
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.image-credit a:hover {
+    color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-card {
+        flex-direction: column;
+    }
+
+    .card-banner {
+        padding: 25px;
+    }
+
+    .card-form {
+        padding: 25px;
+    }
+
+    .banner-content h2 {
+        font-size: 1.6em;
+    }
+
+    .form-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
+
+    .image-credit {
+        font-size: 0.7em;
+    }
+
+    .back-home-button {
+        top: 15px;
+        left: 15px;
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 15px;
+    }
+
+    .banner-content h2 {
+        font-size: 1.4em;
+    }
+
+    .form-title {
+        font-size: 1.6em;
+    }
+
+    .input-group label {
+        font-size: 0.9em;
+    }
+
+    .input-group input[type="email"],
+    .input-group input[type="password"] {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+
+    .forgot-password,
+    .auth-switch {
+        font-size: 0.85em;
+    }
+}
