@@ -38,7 +38,7 @@
         <a href="?valofmenu=profile">Profile</a>
         <a href="?valofmenu=team">Team Management</a>
         <a href="?valofmenu=recruit">Recruit</a>
-        <a href="#">Support</a>
+        <a href="./Tools/toolsmanage.php">Support System</a>
         <b><a href="?task=logout" style="color:red">Logout</a></b>
     </nav>
 </div>
