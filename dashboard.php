@@ -402,7 +402,7 @@
 
                      <tbody>
                      <?php
-                    $query = "SELECT * FROM `cv`"; // Limit এবং Offset বাদ দিন
+                    $query = "SELECT * FROM `cv`"; // Limit & Offset Removed From here.
                     $result = mysqli_query($conn, $query);
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
@@ -428,7 +428,8 @@
               <?php
           } //New else if for Main Menu Start From Here!
           elseif('profile' == $itemFromDash){
-              include('p.php');
+            // include('./asset/routes/admin/adminProfile.php'); //Admin Profile Edit PreLanding Page.
+            include_once('./asset/routes/admin/adminProfile.php');
           }
           elseif('event' == $itemFromDash){
             print(ucwords("we need to implement the session tracking and windows minimize detection system here."));
